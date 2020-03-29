@@ -1,0 +1,17 @@
+Версия установленного docker:
+$ docker --version
+
+Запуск тестового контейнера hello-world:
+$ docker run hello-world
+
+Создание образа с Oracle 18XE:
+$ ./buildDockerImage.sh -v 18.4.0 -x
+
+Создание и запуск контейнера:
+$ docker run --name oracle18xe -p 1522:1521 -p 5500:5500 -e oracle_pwd=booble34 -v C:\Users\d.kivilev\docker-demo-db\oracle18xe:/opt/oracle/oradata oracle/database:18.4.0-xe
+
+Получить доступ к командной строки контейнера:
+$ docker exec -it oracle18xe /bin/bash
+
+Войти в базу данных под пользователем system:
+$ sqlplus system/booble34@oracle18xe
