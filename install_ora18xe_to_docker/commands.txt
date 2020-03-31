@@ -15,3 +15,13 @@ $ docker exec -it oracle18xe /bin/bash
 
 Войти в базу данных под пользователем system:
 $ sqlplus system/booble34@oracle18xe
+
+
+
+Запросы:
+
+select * from dual;
+
+select * from v$version;
+
+select user from dual;
