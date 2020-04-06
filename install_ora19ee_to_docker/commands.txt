@@ -1,0 +1,42 @@
+Версия установленного docker:
+$ docker --version
+
+Запуск тестового контейнера hello-world:
+$ docker run hello-world
+
+Создание образа с Oracle 19EE:
+$ ./buildDockerImage.sh -v 19.3.0 -e
+
+Создание и запуск контейнера:
+$ docker run --name oracle19ee -p 1523:1521 -p 5502:5500 -e ORACLE_PWD=booble34 -v C:\Users\d.kivilev\docker-demo-db\oracle19ee:/opt/oracle/oradata oracle/database:19.3.0-ee
+
+Получить доступ к командной строки контейнера:
+$ docker exec -it oracle19ee /bin/bash
+
+Войти в базу данных под пользователем system:
+$ sqlplus system/booble34@oracle19ee
+
+Войти в Enterprise Manager:
+https://127.0.0.1:5502/em/login
+system/boole34. Имя контейнера - orclpdb1.
+
+
+
+Запросы:
+
+connect myuser/booble34@oracle19ee
+
+select * from dual;
+
+select * from v$version;
+
+select user from dual;
+
+
+-- бесконечный цикл
+begin
+  loop
+    null;
+  end loop;
+end;
+/
