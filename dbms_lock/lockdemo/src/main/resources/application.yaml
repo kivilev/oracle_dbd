@@ -1,0 +1,5 @@
+oracle:
+    datasourse:
+        jdbcUrl: jdbc:oracle:thin:@oracle18xe
+        username: hr
+        password: booble34
