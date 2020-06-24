@@ -13,7 +13,7 @@ sys.standard;
 begin
   insert into demo1 values (null);     
 exception 
-  when others then -- Так сибе путь
+  when others then -- Так себе путь
     if sqlcode = -01400 then
       dbms_output.put_line('Возможно, конечно, так обрабатывать, но шляпа :)');    
     else --! момент

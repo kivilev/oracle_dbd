@@ -80,7 +80,7 @@ end;
 
 ---- Тестируем
 declare
-  v_wallet_id wallet.wallet_id%type := -1;
+  v_wallet_id wallet.wallet_id%type := 1;
   /* 1 - ок, 2 - баланс не нулевой, 3 - захолдированный баланс, 666 - спец кошелек, -1 - такого нет*/
 begin
   -- попытка удалить кошелек
