@@ -1,0 +1,9 @@
+docker exec -it oracle18xe /bin/bash
+su - oracle
+cd /opt/oracle/diag
+mkdir hprofiler
+
+cd /opt/oracle/diag/hprofiler
+plshprof my_report_215043.trc
+cp ./my_report_215043.html /opt/oracle/oradata
+
