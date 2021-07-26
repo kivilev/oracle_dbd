@@ -1,33 +1,31 @@
-------------- Эксперимент 1. Ограничение по выборке
+----- Пример 1. Pipelined функции с объектами
 
------- 1.1. Без ограничений (выполнятся одинаково за 10 сек)
--- обычная
-select * from delay_simple();
--- конвейерная
-select * from delay_pipelined();
+-- объект
+create or replace type t_person is object(
+  id number,
+  full_name varchar2(200 char)
+);
+/
+-- коллекция объектов
+create or replace type t_person_arr is table of t_person;
+/
 
+-- конвейерная функция
+create or replace function get_persons return t_person_arr
+pipelined 
+is
+begin
+  -- генерируем 10 строк
+  for i in 1..10 loop
+    -- возвращаем результат
+    pipe row(t_person(i, 'full_name_'||i));
+  end loop;
+end;
+/
 
------- 1.2. Ограничение по количеству строк через rownum
+-- вызываем (<12)
+select * from table(get_persons());
 
--- обычная (выполняется 5 сек)
-select * 
-  from table(delay_simple()) t
- where rownum <= 3;
+-- вызываем (12+)
+select * from get_persons();
 
--- конвейерная (выполняется 3 сек)
-select * 
-  from table(delay_pipelined()) t
- where rownum <= 3;
-
- 
------- 1.3. Ограничение по какому-то значению
-
--- обычная (выполняется 10 сек)
-select * 
-  from table(delay_simple()) t
- where value(t) in (1,3);
-
--- конвейерная (выполняется 10 сек)
-select * 
-  from table(delay_simple()) t
- where value(t) in (1,3);
