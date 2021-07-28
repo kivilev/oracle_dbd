@@ -7,11 +7,11 @@ create or replace type t_person is object(
 );
 /
 -- коллекция объектов
-create or replace type t_person_arr is table of t_person;
+create or replace type t_persons is table of t_person;
 /
 
 -- конвейерная функция
-create or replace function get_persons return t_person_arr
+create or replace function get_persons return t_persons
 pipelined 
 is
 begin
