@@ -1,0 +1,7 @@
+oracle:
+    datasource:
+        extensions:
+            initSql: alter session set current_schema=payment_core
+        jdbcUrl: jdbc:oracle:thin:@clo-studydb
+        username: payment_core
+        password: booble12

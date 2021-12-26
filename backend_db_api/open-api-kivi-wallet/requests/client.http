@@ -1,0 +1,20 @@
+### Регистрация Володи Яковлева в Киви-кошельке (создание клиента через client_api_pack.create_client)
+POST http://localhost:8080/api/v1/clients
+Content-Type: application/json
+
+{
+  "lastName": "Яковлев",
+  "firstName": "Владимир",
+  "middleName": "Владимирович",
+  "email": "milicioner77@gmail.com",
+  "phone": "+79999137800"
+}
+
+### Зашел в личный кабинет посмотреть свои данные (информация по клиенту - select * from client)
+GET http://localhost:8080/api/v1/clients/22
+
+
+### Володя решил удалить свой кошелек (деактивация клиента - client_api_pack.deactivate)
+DELETE http://localhost:8080/api/v1/clients/deactivate/22
+
+
