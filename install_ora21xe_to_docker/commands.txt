@@ -1,0 +1,26 @@
+Версия установленного docker:
+$ docker --version
+
+Запуск тестового контейнера hello-world:
+$ docker run hello-world
+
+Создание образа с Oracle 18XE:
+$ ./buildDockerImage.sh -v 21.3.0 -x
+
+Создание и запуск контейнера:
+$ docker run --name oracle21xe -p 1522:1521 -p 5501:5500 -e ORACLE_PWD=booble34 -v C:\Users\d.kivilev\docker-files\oracle21xe:/opt/oracle/oradata oracle/database:21.3.0-xe
+
+Получить доступ к командной строки контейнера:
+$ docker exec -it oracle21xe /bin/bash
+
+Войти в базу данных под пользователем system:
+$ sqlplus system/booble34@oracle21xe
+
+
+Запросы:
+
+select * from dual;
+
+select banner from v$version;
+
+select user from dual;
