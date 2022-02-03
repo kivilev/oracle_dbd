@@ -20,15 +20,14 @@ class EbrDemoAppApplication(
         while (true) {
             currentDbEdition = dbEditionService.getDatabaseDefaultEdition()
             if (currentDbEdition != previousDbEdition) {
-                //log.info("Default database edition was changed to $currentDbEdition")
+                log.info("Default database edition was changed to $currentDbEdition")
                 demoDao.setSessionDefaultEdition(currentDbEdition)
                 previousDbEdition = currentDbEdition
-                //log.info("Session edition was changed to $currentDbEdition")
+                log.info("Session edition was changed to $currentDbEdition")
             }
             log.info(demoDao.getDemoFuncResult().get())
             Thread.sleep(2000)
         }
-
     }
 }
 
