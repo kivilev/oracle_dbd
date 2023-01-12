@@ -1,4 +1,4 @@
---------- Пример 4. Использование PGA
+﻿--------- Пример 4. Использование PGA
 
 -- Получение текущего использования PGA
 create or replace function get_session_pga return number as
@@ -6,10 +6,11 @@ create or replace function get_session_pga return number as
 begin
   select sum(round(s.value / 1024))
     into v_pga_size
-    from v$sesstat  s
-        ,v$statname n
+    from sys.v$sesstat  s
+        ,sys.v$statname n
    where s.statistic# = n.statistic#
-     and sid = sys_context('USERENV', 'SID');
+     and sid = sys_context('USERENV', 'SID')
+     and lower(n.name) = 'session pga memory';
   return v_pga_size;
 end;
 /
@@ -30,7 +31,6 @@ begin
   dbms_output.put_line('PGA usage simple: '||round((p2-p1)/1024,2)||' Kb'); 
 end;
 /
-
 
 --- тест delay_pipelined
 declare
