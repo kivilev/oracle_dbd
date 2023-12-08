@@ -1,4 +1,4 @@
-create or replace package body ut_wallet_api_pack is
+﻿create or replace package body ut_wallet_api_pack is
 
   g_wallet_id wallet.wallet_id%type;
 
@@ -28,7 +28,7 @@ create or replace package body ut_wallet_api_pack is
   end;
 
 
-  procedure create_wallet_with_wrong_currency is
+  procedure create_wallet_with_wrong_currency_leads_to_error is
     v_currency_id wallet.currency_id%type := -1;
     v_balance     wallet.balance%type := 100;
   begin
@@ -38,7 +38,7 @@ create or replace package body ut_wallet_api_pack is
   end;
 
 
-  procedure create_wallet_with_negative_balance is
+  procedure create_wallet_with_negative_balance_leads_to_error is
     v_currency_id wallet.currency_id%type := wallet_api_pack.c_rub_code;
     v_balance     wallet.balance%type := -1;
   begin

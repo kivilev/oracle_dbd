@@ -1,5 +1,5 @@
 oracle:
     datasourse:
-        jdbcUrl: jdbc:oracle:thin:@oracle18xe
+        jdbcUrl: jdbc:oracle:thin:@studydb
         username: hr
-        password: booble34
+        password: ntcnth

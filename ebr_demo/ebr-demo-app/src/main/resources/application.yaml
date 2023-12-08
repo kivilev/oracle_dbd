@@ -2,7 +2,7 @@ oracle:
     datasource:
         extensions:
             initSql: alter session set current_schema=hr_ebr
-        jdbcUrl: jdbc:oracle:thin:@demodb18xe
+        jdbcUrl: jdbc:oracle:thin:@oracle21xe
         username: hr_ebr
         password: booble12
 edition:
